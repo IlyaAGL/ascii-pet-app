@@ -28,7 +28,7 @@ func (p *AsciiHandler) StartApi() {
 
 	r.Use(cors.New(cors.Config{
         AllowOrigins:     []string{"http://localhost:8000"},
-        AllowMethods:     []string{"GET", "PUT"},
+        AllowMethods:     []string{"GET", "PUT", "OPTIONS"},
         AllowHeaders:     []string{"Origin", "Content-Type"},
         AllowCredentials: true,
         MaxAge: 12 * time.Hour,

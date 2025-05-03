@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    ports:
+      - "6432:5432"
+    restart: unless-stopped
+    networks:
+      - ascii-net
+
+  backend:
+    build:
+      context: ./backend
+    environment:
+      - PORT=6060
+      - MIGRATIONS_PATH=file://./db/migrations
+      - DATABASE_URL=postgres://postgres:postgres@postgres:5432/postgres?sslmode=disable
+    ports:
+      - "8080:6060"
+    depends_on:
+      - postgres
+    networks:
+      - ascii-net
+
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "8000:80"
+    depends_on:
+      - backend
+    networks:
+      - ascii-net
+
+networks:
+  ascii-net:
