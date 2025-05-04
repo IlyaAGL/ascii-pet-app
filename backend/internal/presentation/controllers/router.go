@@ -95,6 +95,16 @@ func (p *AsciiHandler) uploadAscii(ctx *gin.Context) {
 		return
 	}
 
+	if ascii.Ascii == "" || ascii.Description == "" {
+		logger.Log.Info("Invalid data. Something is not passed")
+
+		ctx.JSON(http.StatusInternalServerError, gin.H{
+			"status": "Fill all the fields",
+		})
+
+		return
+	}
+
 	logger.Log.Info("Received", "DESCRIPTION", ascii.Description)
 
 	err := p.service.UploadAscii(ascii)
