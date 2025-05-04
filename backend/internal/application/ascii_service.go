@@ -20,3 +20,7 @@ func (s *AsciiService) GetAscii() (entities.Ascii, error) {
 func (s *AsciiService) UploadAscii(ascii entities.Ascii) error {
 	return s.repo.UploadAscii(ascii)
 }
+
+func (s *AsciiService) DeleteAscii() error {
+	return s.repo.DeleteAscii()
+}

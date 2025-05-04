@@ -8,7 +8,7 @@ import (
 var Log *slog.Logger
 
 func init() {
-	Log = slog.New(slog.NewTextHandler(os.Stdout, &slog.HandlerOptions{
+	Log = slog.New(slog.NewTextHandler(os.Stdout, &slog.HandlerOptions{ // Настроил логирование для мониторинга действий программы
 		Level: slog.LevelDebug,
 	}))
 }

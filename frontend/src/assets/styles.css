@@ -1,19 +1,49 @@
 body {
-    font-family: Arial, sans-serif;
-    background: #f0f2f5;
-    color: #333;
-    margin: 0;
-    padding: 0;
-  }
-  .container {
-    max-width: 600px;
-    margin: 40px auto;
-    padding: 20px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  }
-  h1 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
+  font-family: Arial, sans-serif;
+  background: #f0f2f5;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+.container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Карточка питомца */
+.pet-container {
+  background: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 20px;
+  font-family: 'Courier New', monospace;
+}
+.pet-container h2 {
+  margin: 0 0 10px;
+  font-size: 1.5rem;
+  text-align: center;
+}
+.pet-container pre {
+  background: #fff;
+  padding: 15px;
+  border-radius: 6px;
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
+  overflow-x: auto;
+}
+
+/* Плавное появление/исчезновение */
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+}
