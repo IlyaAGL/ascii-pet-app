@@ -12,3 +12,4 @@ git clone https://github.com/IlyaAGL/ascii-pet-app.git
 cd ascii-pet-app
 docker-compose up
 ```
+После выполнения вышеперечисленных команд, надо перейти на http://localhost:8000
