@@ -40,8 +40,7 @@ export default {
     const getPet = async () => {
       try {
         const { data } = await api.get('/pet')
-        form.description = data.description
-        form.ascii = data.ascii
+        emit('fetched', data)
       } catch (err) {
         console.error('Failed to fetch pet:', err)
       }

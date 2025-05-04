@@ -1,15 +1,8 @@
 <template>
   <div class="container">
     <h1>ASCII Pet App</h1>
-    <PetForm @saved="fetchPet" />
-
-    <transition name="fade">
-      <PetDisplay
-        v-if="pet"
-        :pet="pet"
-        @deleted="handleDeleted"
-      />
-    </transition>
+    <PetForm @saved="fetchPet" @fetched="setPet" />
+    <PetDisplay v-if="pet" :pet="pet" @deleted="pet = null" />
   </div>
 </template>
 
@@ -20,7 +13,6 @@ import PetDisplay from './components/PetDisplay.vue'
 import api from './services/api'
 
 export default {
-  name: 'App',
   components: { PetForm, PetDisplay },
   setup() {
     const pet = ref(null)
@@ -29,18 +21,18 @@ export default {
       try {
         const { data } = await api.get('/pet')
         pet.value = data
-      } catch (err) {
-        console.error('Failed to fetch pet:', err)
+      } catch {
         pet.value = null
       }
     }
 
-    const handleDeleted = () => {
-      pet.value = null
+    const setPet = (data) => {
+      pet.value = data
     }
 
     onMounted(fetchPet)
-    return { pet, fetchPet, handleDeleted }
+
+    return { pet, fetchPet, setPet }
   }
 }
 </script>

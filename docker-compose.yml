@@ -10,8 +10,6 @@ services:
       - DATABASE_URL=postgres://postgres:postgres@postgres:5432/postgres?sslmode=disable
     ports:
       - "8080:6060"
-    depends_on:
-      - postgres
     networks:
       - ascii-net
 
